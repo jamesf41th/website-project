@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 5. Universal Scroll-Spy (Works with ANY navbar link class)
+    // 5. Universal Scroll-Spy
     const sections = Array.from(document.querySelectorAll('section[id], footer[id]'));
     const navAnchors = Array.from(document.querySelectorAll('header nav a[href^="#"], .mobile-nav-links a[href^="#"]'));
 
@@ -167,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Bottom of page check for footer Contact Us
         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 30) {
             activeId = sections[sections.length - 1].getAttribute('id').toLowerCase();
         }
@@ -184,31 +183,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav();
-});
 
-// 6. Hide Navbar on Scroll Down, Show on Scroll Up
+
+    // 6. Hide Navbar on Scroll Down, Show on Scroll Up
     const headerElement = document.querySelector('header');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
 
-        // Don't trigger at the very top bounce or if mobile menu is open
-        if (currentScrollY <= 20) {
-            headerElement.classList.remove('nav-hidden');
-            lastScrollY = currentScrollY;
+        if (currentScrollY <= 10 || Math.abs(currentScrollY - lastScrollY) < 15) {
             return;
         }
 
         if (document.body.classList.contains('menu-open')) return;
 
-        if (currentScrollY > lastScrollY && currentScrollY > 80) {
-            // Scrolling Down -> Hide Header
+        if (currentScrollY > lastScrollY) {
             headerElement.classList.add('nav-hidden');
-        } else if (currentScrollY < lastScrollY) {
-            // Scrolling Up -> Show Header
+        } else {
             headerElement.classList.remove('nav-hidden');
         }
 
         lastScrollY = currentScrollY;
-    });
+    }, { passive: true });
+
+});
