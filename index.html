@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Ritual Roasters</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#hero" class="logo-text">☕ Morning Ritual</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">☰</button>
+            
+            <!-- Desktop Navigation Links -->
+            <ul class="desktop-nav">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Mobile Blurred Backdrop & Slide-Out Drawer (Placed outside <header> to cover top edge cleanly) -->
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <aside class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <span>☕ Menu</span>
+            <button class="close-btn" id="close-btn" aria-label="Close Menu">✕</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </aside>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-text">
+                <h1>Freshly Roasted Coffee</h1>
+                <p>Start your morning right. Order your favorite specialty coffee now.</p>
+                <a href="#products" class="btn">Order Now</a>
+            </div>
+            <div class="hero-image">
+                <img src="Images/hero coffee.png" alt="Steaming cup of specialty coffee">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2>About Us</h2>
+            <p>
+                Morning Ritual Roasters started with a simple mission: to make café-quality specialty coffee accessible to everyone. We partner directly with sustainable growers around the world and roast every batch to bring out rich, balanced flavors in every sip. Good beans, honest craft, and zero pretension—just really great coffee.
+            </p>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <h2>Our Products</h2>
+            <div class="grid-container">
+                <div class="product-card">
+                    <img src="Images/products/americano.jpg" alt="Cup of Americano">
+                    <h3>Americano</h3>
+                    <p class="price">₹180</p>
+                    <button class="order-btn" data-coffee="Americano">Order</button>
+                </div>
+                <div class="product-card">
+                    <img src="Images/products/black coffee.jpg" alt="Cup of Black Coffee">
+                    <h3>Black Coffee</h3>
+                    <p class="price">₹150</p>
+                    <button class="order-btn" data-coffee="Black Coffee">Order</button>
+                </div>
+                <div class="product-card">
+                    <img src="Images/products/capachino.jpg" alt="Cup of Cappuccino">
+                    <h3>Cappuccino</h3>
+                    <p class="price">₹220</p>
+                    <button class="order-btn" data-coffee="Cappuccino">Order</button>
+                </div>
+                <div class="product-card">
+                    <img src="Images/products/espresso.jpg" alt="Shot of Espresso">
+                    <h3>Espresso</h3>
+                    <p class="price">₹140</p>
+                    <button class="order-btn" data-coffee="Espresso">Order</button>
+                </div>
+                <div class="product-card">
+                    <img src="Images/products/latte.jpg" alt="Cup of Latte">
+                    <h3>Latte</h3>
+                    <p class="price">₹240</p>
+                    <button class="order-btn" data-coffee="Latte">Order</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <h2>See What Our Customers Say!</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev-btn" id="prev-btn" aria-label="Previous testimonial">❮</button>
+                
+                <div class="carousel-wrapper" id="carousel-wrapper">
+                    <div class="carousel-track" id="testimonial-track">
+                        <div class="review-card">
+                            <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Susan Kate profile picture">
+                            <div>
+                                <h3>Susan Kate</h3>
+                                <p>Hehehe! Really love this coffee.</p>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="Jenna profile picture">
+                            <div>
+                                <h3>Jenna</h3>
+                                <p>Love it! The coffee beans are super fresh.</p>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://randomuser.me/api/portraits/men/71.jpg" alt="Victor profile picture">
+                            <div>
+                                <h3>Victor</h3>
+                                <p>Amazing coffee ❤❤</p>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="James profile picture">
+                            <div>
+                                <h3>James</h3>
+                                <p>👍</p>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://randomuser.me/api/portraits/women/18.jpg" alt="Charlotte profile picture">
+                            <div>
+                                <h3>Charlotte</h3>
+                                <p>Lovely coffee and cozy vibe.</p>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="Rahul profile picture">
+                            <div>
+                                <h3>Rahul</h3>
+                                <p>Nice....! Best morning brew in town.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button class="carousel-btn next-btn" id="next-btn" aria-label="Next testimonial">❯</button>
+            </div>
+        </section>
+
+    </main>
+  
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <p class="copyright">© 2026 Morning Ritual Roasters | h4m1d. All rights reserved.</p>
+            <ul class="contact-list">
+                <li class="copy-item" data-copy="+91 12345 67890" title="Click to copy phone number">+91 12345 67890</li>
+                <li class="copy-item" data-copy="morningroasters@mrr.com" title="Click to copy email">morningroasters@mrr.com</li>
+            </ul>
+        </div>
+    </footer>
+        <!-- Floating Toast Notification -->
+    <div id="copy-toast" class="copy-toast">Copied to clipboard!</div>
+</body>
+</html>
