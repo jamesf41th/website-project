@@ -45,6 +45,11 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+}
+
+header.nav-hidden {
+    transform: translateY(-100%);
 }
 
 .navbar {
@@ -126,7 +131,6 @@ body.menu-open {
         transition: opacity 0.4s ease, visibility 0.4s ease;
         z-index: 2000;
     }
-
 
     .nav-overlay.active {
         opacity: 1;
