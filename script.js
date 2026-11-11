@@ -185,3 +185,30 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav();
 });
+
+// 6. Hide Navbar on Scroll Down, Show on Scroll Up
+    const headerElement = document.querySelector('header');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // Don't trigger at the very top bounce or if mobile menu is open
+        if (currentScrollY <= 20) {
+            headerElement.classList.remove('nav-hidden');
+            lastScrollY = currentScrollY;
+            return;
+        }
+
+        if (document.body.classList.contains('menu-open')) return;
+
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            // Scrolling Down -> Hide Header
+            headerElement.classList.add('nav-hidden');
+        } else if (currentScrollY < lastScrollY) {
+            // Scrolling Up -> Show Header
+            headerElement.classList.remove('nav-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+    });
