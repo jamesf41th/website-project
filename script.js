@@ -186,25 +186,27 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNav();
 });
 
-// 6. Hide Navbar on Scroll Down, Show on Scroll Up (Mobile-friendly)
+// 6. Hide Navbar on Scroll Down, Ease In on Scroll Up
     const headerElement = document.querySelector('header');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
 
-        // Ignore small movements or negative bounce scrolls on mobile
-        if (currentScrollY <= 10 || Math.abs(currentScrollY - lastScrollY) < 15) {
+        // Always show header near the very top of the page
+        if (currentScrollY <= 20) {
+            headerElement.classList.remove('nav-hidden');
+            lastScrollY = currentScrollY;
             return;
         }
 
         if (document.body.classList.contains('menu-open')) return;
 
-        if (currentScrollY > lastScrollY) {
-            // Scrolling Down -> Hide Header
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            // Scrolling Down -> Hide Header upwards
             headerElement.classList.add('nav-hidden');
-        } else {
-            // Scrolling Up -> Show Header
+        } else if (currentScrollY < lastScrollY) {
+            // Scrolling Up -> Ease in from the top immediately
             headerElement.classList.remove('nav-hidden');
         }
 
