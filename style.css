@@ -45,7 +45,7 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Added transition for hiding/showing */
 }
 
 header.nav-hidden {
@@ -70,22 +70,22 @@ header.nav-hidden {
 .desktop-nav {
     display: flex;
     list-style: none;
-    gap: 10px;
+    gap: 10px; /* Slightly tighter gap since links now have padding */
 }
 
 .desktop-nav a {
     color: #f5ebe0;
     text-decoration: none;
     font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 8px 16px;          /* Creates space inside the hover box */
+    border-radius: 20px;        /* Rounded pill-box style */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .desktop-nav a:hover, 
 .desktop-nav a.active {
-    background-color: #c86d1f;
-    color: #ffffff;
+    background-color: #c86d1f;  /* Dark amber/orange pill background */
+    color: #ffffff;             /* Crisp white text for strong contrast */
 }
 
 .menu-toggle,
@@ -114,6 +114,7 @@ body.menu-open {
         cursor: pointer;
     }
 
+    /* Full-Screen Blurred Backdrop (Covers Header Too) */
     .nav-overlay {
         display: block;
         position: fixed;
@@ -137,6 +138,7 @@ body.menu-open {
         pointer-events: auto;
     }
 
+    /* Full-Height Side Drawer Flush With Top Edge */
     .mobile-drawer {
         display: flex;
         flex-direction: column;
@@ -145,17 +147,17 @@ body.menu-open {
         right: 0;
         width: 72%;
         max-width: 280px;
-        height: 100dvh;
+        height: 100dvh; /* Covers full mobile screen height including top bar */
         background-color: #3e2723;
         padding: 25px;
         box-shadow: -6px 0 20px rgba(0, 0, 0, 0.35);
-        transform: translateX(100%);
+        transform: translateX(100%); /* Starts hidden off-screen to the right */
         transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        z-index: 2001;
+        z-index: 2001; /* Above blurred backdrop */
     }
 
     .mobile-drawer.active {
-        transform: translateX(0);
+        transform: translateX(0); /* Glides smoothly into view */
     }
 
     .drawer-header {
@@ -202,6 +204,7 @@ body.menu-open {
         transform: translateX(6px);
     }
 }
+
 
 /* Hero Section */
 .hero {
@@ -267,7 +270,7 @@ body.menu-open {
     color: #4e342e;
 }
 
-/* Products Section */
+/* Centered Flexbox Layout for Products */
 .products .grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -275,9 +278,10 @@ body.menu-open {
     gap: 25px;
 }
 
+/* Product Cards */
 .product-card {
-    flex: 1 1 240px;
-    max-width: 280px;
+    flex: 1 1 240px;      /* Grows and shrinks smoothly, minimum 240px wide */
+    max-width: 280px;     /* Keeps the 5th card the same width instead of stretching full-width */
     background: #fff;
     border-radius: 12px;
     padding: 20px;
@@ -285,6 +289,7 @@ body.menu-open {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s;
 }
+
 
 .product-card:hover {
     transform: translateY(-5px);
@@ -337,8 +342,8 @@ body.menu-open {
 .carousel-wrapper {
     overflow: hidden;
     width: 100%;
-    touch-action: pan-y;
-    user-select: none;
+    touch-action: pan-y; /* Allows vertical page scrolling while detecting horizontal swipes */
+    user-select: none;   /* Prevents accidental text highlighting while dragging */
 }
 
 .carousel-track {
@@ -352,6 +357,7 @@ body.menu-open {
     cursor: grabbing;
 }
 
+/* Arrow Buttons */
 .carousel-btn {
     background-color: #c86d1f;
     color: #fff;
@@ -374,7 +380,7 @@ body.menu-open {
     transform: scale(1.08);
 }
 
-/* Mobile View: Stacked column layout for rectangular cards */
+/* Mobile View: Stacked column layout for wider, rectangular appearance */
 .review-card {
     flex: 0 0 100%;
     background: #fff;
@@ -393,7 +399,7 @@ body.menu-open {
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
-    pointer-events: none;
+    pointer-events: none; /* Prevents dragging the image ghost on PC */
 }
 
 .review-card h3 {
@@ -422,6 +428,7 @@ body.menu-open {
     }
 }
 
+/* Make arrows slightly smaller on narrow phones */
 @media (max-width: 480px) {
     .carousel-btn {
         width: 34px;
@@ -429,6 +436,106 @@ body.menu-open {
         font-size: 1rem;
     }
 }
+/* Arrow Buttons */
+.carousel-btn {
+    background-color: #c86d1f;
+    color: #fff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.carousel-btn:hover {
+    background-color: #9e500f;
+    transform: scale(1.08);
+}
+
+/* Mobile View: 1 card visible at a time */
+.review-card {
+    flex: 0 0 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Tablet View: 2 cards visible at a time */
+@media (min-width: 600px) {
+    .review-card {
+        flex: 0 0 calc((100% - 20px) / 2);
+    }
+}
+
+/* PC View: 3 cards visible at a time */
+@media (min-width: 900px) {
+    .review-card {
+        flex: 0 0 calc((100% - 40px) / 3);
+    }
+}
+
+.review-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    pointer-events: none; /* Prevents dragging the image ghost on PC */
+}
+
+.review-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+}
+
+/* Make arrows slightly smaller on narrow phones */
+@media (max-width: 480px) {
+    .carousel-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
+}
+
+
+/* Tablet View: 2 cards visible at a time */
+@media (min-width: 600px) {
+    .review-card {
+        flex: 0 0 calc((100% - 20px) / 2);
+    }
+}
+
+/* PC View: 3 cards visible at a time */
+@media (min-width: 900px) {
+    .review-card {
+        flex: 0 0 calc((100% - 40px) / 3);
+    }
+}
+
+.review-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.review-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+}
+
 
 /* Footer */
 footer {
@@ -455,6 +562,44 @@ footer {
     cursor: pointer;
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #3e2723;
+        padding: 20px 8%;
+        gap: 15px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 /* Floating Toast Notification */
 .copy-toast {
     position: fixed;
@@ -469,7 +614,7 @@ footer {
     font-size: 0.95rem;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     opacity: 0;
-    visibility: hidden;
+    visibility: hidden; /* Guarantees it stays completely hidden until triggered */
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
     z-index: 3000;
