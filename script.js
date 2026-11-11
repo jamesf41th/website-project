@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 5. Universal Scroll-Spy
+    // 5. Universal Scroll-Spy (Works with ANY navbar link class)
     const sections = Array.from(document.querySelectorAll('section[id], footer[id]'));
     const navAnchors = Array.from(document.querySelectorAll('header nav a[href^="#"], .mobile-nav-links a[href^="#"]'));
 
@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Bottom of page check for footer Contact Us
         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 30) {
             activeId = sections[sections.length - 1].getAttribute('id').toLowerCase();
         }
@@ -183,15 +184,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav();
+});
 
-
-    // 6. Hide Navbar on Scroll Down, Show on Scroll Up
+// 6. Hide Navbar on Scroll Down, Show on Scroll Up (Mobile-friendly)
     const headerElement = document.querySelector('header');
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
 
+        // Ignore small movements or negative bounce scrolls on mobile
         if (currentScrollY <= 10 || Math.abs(currentScrollY - lastScrollY) < 15) {
             return;
         }
@@ -199,12 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.body.classList.contains('menu-open')) return;
 
         if (currentScrollY > lastScrollY) {
+            // Scrolling Down -> Hide Header
             headerElement.classList.add('nav-hidden');
         } else {
+            // Scrolling Up -> Show Header
             headerElement.classList.remove('nav-hidden');
         }
 
         lastScrollY = currentScrollY;
     }, { passive: true });
-
-});
