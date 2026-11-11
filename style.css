@@ -376,6 +376,85 @@ body.menu-open {
     transform: scale(1.08);
 }
 
+/* Mobile View: Stacked column layout for wider, rectangular appearance */
+.review-card {
+    flex: 0 0 100%;
+    background: #fff;
+    padding: 20px 18px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.review-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    pointer-events: none; /* Prevents dragging the image ghost on PC */
+}
+
+.review-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+}
+
+/* Tablet & Desktop View: Side-by-side row layout */
+@media (min-width: 600px) {
+    .review-card {
+        flex: 0 0 calc((100% - 20px) / 2);
+        flex-direction: row;
+        align-items: center;
+        padding: 25px;
+    }
+
+    .review-card img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (min-width: 900px) {
+    .review-card {
+        flex: 0 0 calc((100% - 40px) / 3);
+    }
+}
+
+/* Make arrows slightly smaller on narrow phones */
+@media (max-width: 480px) {
+    .carousel-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
+}
+/* Arrow Buttons */
+.carousel-btn {
+    background-color: #c86d1f;
+    color: #fff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.carousel-btn:hover {
+    background-color: #9e500f;
+    transform: scale(1.08);
+}
+
 /* Mobile View: 1 card visible at a time */
 .review-card {
     flex: 0 0 100%;
